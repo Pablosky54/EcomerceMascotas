@@ -1,0 +1,219 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Pedigree Palace Design System */
+    --pp-bg: #F5F5F2;
+    --pp-bg-dark: #111111;
+    --pp-gold: #D4AF37;
+    --pp-gold-light: #E5C76B;
+    --pp-gold-dark: #B8941F;
+    --pp-text: #111111;
+    --pp-text-secondary: #6E6E6E;
+    --pp-text-light: #FFFFFF;
+    --pp-border: rgba(17, 17, 17, 0.25);
+    --pp-border-gold: #D4AF37;
+
+    /* Typography */
+    --font-heading: 'Playfair Display', Georgia, serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+
+    /* shadcn overrides */
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: 0rem;
+  }
+
+  * {
+    @apply border-border;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: var(--pp-bg);
+    color: var(--pp-text);
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+}
+
+@layer components {
+  /* Gold button style */
+  .btn-gold {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.875rem 2rem;
+    border: 1.5px solid var(--pp-gold);
+    color: var(--pp-gold);
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+
+  .btn-gold:hover {
+    background: var(--pp-gold);
+    color: var(--pp-text);
+  }
+
+  .btn-gold-filled {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2.5rem;
+    background: var(--pp-gold);
+    color: var(--pp-text);
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+
+  .btn-gold-filled:hover {
+    background: var(--pp-gold-dark);
+    transform: translateY(-2px);
+  }
+
+  /* Black band overlay */
+  .black-band {
+    background: var(--pp-bg-dark);
+    color: var(--pp-text-light);
+  }
+
+  /* Gold frame lines */
+  .gold-frame {
+    position: absolute;
+    inset: 1.5rem;
+    border: 1px solid var(--pp-gold);
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .gold-frame::before {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    border: 1px solid var(--pp-gold);
+    opacity: 0.5;
+  }
+
+  /* Section typography */
+  .heading-xl {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    line-height: 1.1;
+  }
+
+  .heading-lg {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    line-height: 1.15;
+  }
+
+  .label-micro {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+  }
+
+  /* Image container */
+  .img-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Badge circle */
+  .badge-circle {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 9999px;
+    background: var(--pp-bg-dark);
+    border: 2px solid var(--pp-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Grain overlay */
+  .grain-overlay {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.06;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  }
+}
+
+@layer utilities {
+  .font-heading {
+    font-family: var(--font-heading);
+  }
+
+  .font-body {
+    font-family: var(--font-body);
+  }
+
+  .text-gold {
+    color: var(--pp-gold);
+  }
+
+  .bg-gold {
+    background-color: var(--pp-gold);
+  }
+
+  .border-gold {
+    border-color: var(--pp-gold);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
